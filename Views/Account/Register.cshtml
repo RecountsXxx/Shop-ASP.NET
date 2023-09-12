@@ -1,0 +1,28 @@
+﻿@model OnlineShop.Models.RegisterModel
+
+<div class="container p-4 h-100 justify-content-center d-flex align-items-center flex-column">
+<h2>Register form</h2>
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Confirm password</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Register" class="btn btn-primary w-100" />
+    </div>
+    <a href="/Account/Login">You have a account? Login</a>
+</form>
+</div>

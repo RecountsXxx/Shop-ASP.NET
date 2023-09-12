@@ -1,0 +1,1 @@
+2023-09-08 19:41:02.5566|INFO|Shop.Controllers.HomeController|This is an info log message.

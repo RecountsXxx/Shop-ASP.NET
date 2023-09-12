@@ -1,0 +1,55 @@
+﻿@model Shop.Models.Cart
+
+<div class="container d-flex flex-column">
+    <h1>Cart</h1>
+
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>Name product</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Items != null)
+            {
+            @foreach(var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price</td>
+      
+                        <td>
+                            <form method="post" style="margin-top:0px;" asp-controller="Cart" asp-action="RemoveFromCart">
+                                <input type="hidden" name="cartItemId" value="@item.Id" />
+                                <button type="submit">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+    <h1>Checkout</h1>
+    <form asp-action="Checkout" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>Your email</label>
+            <input name="Email" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Your phone</label>
+            <input name="Phone" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Your adress</label>
+            <input name="Adress" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Checkout" class="btn btn-primary w-100" />
+        </div>
+
+    </form>
+</div>

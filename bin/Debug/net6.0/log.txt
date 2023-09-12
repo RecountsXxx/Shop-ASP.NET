@@ -1,0 +1,7 @@
+2023-09-03 23:47:35.6287|INFO|Shop.Controllers.HomeController|This is an info log message.
+2023-09-03 23:50:47.8404|INFO|Shop.Controllers.HomeController|This is an info log message.
+2023-09-03 23:51:13.7728|INFO|Shop.Controllers.HomeController|Create product: qwrwww
+2023-09-03 23:51:31.3965|INFO|Shop.Controllers.HomeController|Deleted product: qwrwww
+2023-09-08 19:26:07.5341|INFO|Shop.Controllers.HomeController|This is an info log message.
+2023-09-08 19:26:50.8029|INFO|Shop.Controllers.HomeController|This is an info log message.
+2023-09-08 19:27:45.7537|INFO|Shop.Controllers.HomeController|This is an info log message.

@@ -1,0 +1,169 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+#header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    height:110px;
+}
+
+    #header h1 {
+        margin-bottom: 5px;
+    }
+
+    #header nav ul {
+        list-style: none;
+    }
+
+        #header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+            #header nav ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+#content {
+    max-width: 95vw;
+    margin: 20px auto;
+    display:flex;
+    flex-direction:row;3
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+    #content h2 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    #content p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    #content ul {
+        list-style: none;
+        margin-left: 20px;
+    }
+
+        #content ul li {
+            margin-bottom: 5px;
+        }
+
+    #content a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+#footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #777;
+    font-size: 14px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    form input[type="text"],
+    form input[type="password"],
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+.product-item {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 1px dashed green;
+    border-radius:10px;
+    padding:10px;
+    min-width: 550px;
+    max-width: 850px;
+}
+.products-cont {
+    display: grid;
+    grid-template-columns: repeat(2,3fr);
+    grid-gap: 50px;
+}
+.container-filter {
+    position: sticky;
+    top: 10px; 
+    background-color: white;
+    z-index: 1111100; 
+    padding:10px;
+    border-radius:12px;
+    border: 1px solid black;
+}
+p{
+    font-size:3vh;
+}
+.filter-label {
+    font-size: 15px;
+}
+.filter-price{
+    max-width:150px;
+    min-width:150px;
+}
+.form-check{
+   display:flex;
+   flex-direction:row;
+}
+.line{
+    width:2px;
+    height:230vh;
+    background:black;
+}
+.exit-form{
+    position:absolute;
+    top:0;
+    right:0;
+    margin-right:50px;
+
+}

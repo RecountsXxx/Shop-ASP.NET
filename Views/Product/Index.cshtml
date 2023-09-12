@@ -1,0 +1,64 @@
+﻿@model Shop.Models.ProductViewModel
+@{
+    ViewBag.Title = "Продукты";
+}
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Post))
+{
+<div class="container-filter">
+    <div>
+        <h2 class="text-dark mt-2">Brands</h2>
+        @foreach (var brand in ViewBag.Categories) 
+        {
+            <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Categories" value="@brand.Name" id="defaultCheck@brand" @(Model.Filter.Categories != null && Model.Filter.Categories.Contains(@brand.Name)? "checked" : "") />
+
+                <label class="form-check-label filter-label" for="defaultCheck@brand">
+                    @brand.Name
+                </label>
+            </div>
+        }
+    </div>
+    <div>
+        <h2 class="text-dark mt-2">Price</h2>
+        <input type="text" class="input-group-text mt-2 filter-price" placeholder="From 0.00" name="minPrice" value="@Model.Filter.MinPrice" />
+        <input type="text" class="input-group-text mt-2 filter-price" placeholder="To 100000.0" name="maxPrice" value="@Model.Filter.MaxPrice" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Apply Filter</button>
+    </div>
+</div>
+}
+<hr />
+<div class="row ms-3 border-1 ">
+    <div class="row-md-6">
+        <h2>Featured Products</h2>
+        <div class="products-cont mt-4">
+            @foreach (var product in Model.Products)
+            {
+                <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                <div class="card mb-4">
+                    <div class="d-flex flex-row m-2">
+                        <div>
+                            <img src="@product.ImageUrl" alt="Product Image" style="max-width: 100%; min-height:300px; max-height: 300px;">
+                        </div>
+                        <div>
+                            <div class="card-body">
+                                 <p class="card-title">@product.Name</p>
+                                <input class="card-title" name="productName" type="hidden" value="@product.Name"></input>
+                                 <input class="h6" value="@product.Price" type="hidden" name="productPrice"></input>
+                                <p class="h6 ">@product.Description</p>
+                                <p class="h6 ">Seller: <a href="@product.Seller.Url">@product.Seller.Name</a></p>
+                                <p class="h6 ">Margin: @product.Seller.Margin%</p>
+                                <p class="h6 ">Delivery: @product.Delivery.Name (Стоимость: $@product.Delivery.Price)</p>
+                                    <p class="h6">Price: @product.Price $</p>
+                                <button type="submit" class="btn btn-success">To card</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,209 @@
+﻿@model Shop.Models.ProductViewModelAdmin
+@{
+    ViewBag.Title = "Админ панель";
+}
+<div class="d-flex flex-row gap-5  justify-content-center w-100">
+<div class="d-flex flex-column w-100">
+    <h2>Create product</h2>
+<form asp-action="CreateProduct" method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input asp-for="Product.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <input asp-for="Product.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="ImageUrl">Image URL</label>
+        <input asp-for="Product.ImageUrl" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Price">Price</label>
+        <input asp-for="Product.Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Category">Category</label>
+        <select asp-for="Product.Category.Id" class="form-control">
+            <option value="">Select a category</option>
+            @foreach (var category in Model.Category)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Seller">Seller</label>
+        <select asp-for="Product.Seller.Id" class="form-control">
+            <option value="">Select a seller</option>
+            @foreach (var seller in Model.Seller)
+            {
+                <option value="@seller.Id">@seller.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Delivery">Delivery</label>
+        <select asp-for="Product.Delivery.Id" class="form-control">
+            <option value="">Select a delivery method</option>
+            @foreach (var delivery in Model.Delivery)
+            {
+                <option value="@delivery.Id">@delivery.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Create</button>
+</form>
+            <hr />
+<h2>Create category</h2>
+    <form asp-action="CreateCategory" method="post">
+        <div class="form-group">
+            <label for="Name">Category name</label>
+            <input asp-for="Category.FirstOrDefault().Name" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    <hr />
+    <h2>Create delivery</h2>
+        <form asp-action="CreateDelivery" method="post">
+        <div class="form-group">
+            <label for="Name">Delivery name</label>
+            <input asp-for="Delivery.FirstOrDefault().Name" class="form-control" />
+            <label for="Url">Price delivery</label>
+            <input asp-for="Delivery.FirstOrDefault().Price" class="form-control" />
+            <label for="Margin">Arrival days</label>
+            <input asp-for="Delivery.FirstOrDefault().ArrivalDateDays" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Create</button>
+    </form>
+            <hr />
+    <h2>Create seller</h2>
+    <form asp-action="CreateSeller" method="post">
+        <div class="form-group">
+            <label for="Name">Seller name</label>
+            <input asp-for="Seller.FirstOrDefault().Name" class="form-control" />
+            <label for="Url">Site url</label>
+            <input asp-for="Seller.FirstOrDefault().Url" class="form-control" />
+            <label for="Margin">Margin %</label>
+            <input asp-for="Seller.FirstOrDefault().Margin" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-1">Create</button>
+    </form>
+</div>
+<span class="line"></span>
+    <div class="d-flex flex-column w-100">
+<h2>Products</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in ViewBag.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    <form asp-action="DeleteProduct" asp-controller="AdminPanel" method="post">
+                        <input type="hidden" name="productId" value="@product.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+            <hr />
+    <h2>Sellers</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Margin (%)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var seller in ViewBag.Sellers)
+            {
+                <tr>
+                    <td>@seller.Name</td>
+                    <td>@seller.Url</td>
+                    <td>@seller.Margin</td>
+                    <td>
+                        <form asp-action="DeleteSeller" asp-controller="AdminPanel" method="post">
+                            <input type="hidden" name="sellerId" value="@seller.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+            <hr />
+    <h2>Deliveries</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Arrival days</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var delivery in ViewBag.Deliveries)
+            {
+                <tr>
+                    <td>@delivery.Name</td>
+                    <td>@delivery.Price</td>
+                    <td>@delivery.ArrivalDateDays</td>
+                    <td>
+                        <form asp-action="DeleteDelivery" asp-controller="AdminPanel" method="post">
+                            <input type="hidden" name="deliveryId" value="@delivery.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+            <hr />
+    <h2>Categories</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>
+                        <form asp-action="DeleteCategory" asp-controller="AdminPanel" method="post">
+                            <input type="hidden" name="categoryId" value="@category.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+    <div>
+        <h2>Contact Us</h2>
+
+        <div class="d-flex flex-row">
+            <div class="col-md-6">
+                <p>
+                    Welcome to our Contact Us page. We value your feedback and inquiries. Whether you have questions about our products, need assistance with your orders, or simply want to get in touch, this is the place to do it. Our dedicated team is here to provide you with the information and support you need. Feel free to reach out to us at any time, and we'll do our best to assist you promptly and effectively.
+                </p>
+
+                <hr />
+                <ul>
+                    <li>
+                        <i class="fa fa-envelope"></i> Email: contact@example.com
+                    </li>
+                    <li>
+                        <i class="fa fa-phone"></i> Телефон: +1 (123) 456-7890
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker"></i> Adress: Kyiv, Ukraine, street Bankivska
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-6 ms-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.78690389173!2d30.52646771171472!3d50.445069787633116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce5485437bc9%3A0x7c34bc2fd523fcce!2z0YPQuy4g0JHQsNC90LrQvtCy0LDRjywg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1693770655409!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('Наш офис!').openPopup();
+</script>
